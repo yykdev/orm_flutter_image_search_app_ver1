@@ -11,19 +11,27 @@ class PixabayDto {
   });
 
   Map<String, dynamic> toJson() {
-    return {
-      'total': total,
-      'totalHits': totalHits,
-      'hits': hits,
-    };
+    final map = <String, dynamic>{};
+    map['total'] = total;
+    map['totalHits'] = totalHits;
+
+    if (hits != null) {
+      map['hits'] = hits?.map((e) => e.toJson()).toList();
+    }
+
+    return map;
   }
 
-  factory PixabayDto.fromJson(Map<String, dynamic> map) {
-    return PixabayDto(
-      total: map['total'] as num,
-      totalHits: map['totalHits'] as num,
-      hits: map['hits'] as List<Hits>,
-    );
+  PixabayDto.fromJson(dynamic json) {
+    total = json['total'];
+    totalHits = json['totalHits'];
+
+    if (json['hits'] != null) {
+      hits = [];
+      json['hits'].forEach((v) {
+        hits?.add(Hits.fromJson(v));
+      });
+    }
   }
 
 //</editor-fold>
@@ -80,57 +88,55 @@ class Hits {
   });
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'pageURL': pageURL,
-      'type': type,
-      'tags': tags,
-      'previewURL': previewURL,
-      'previewWidth': previewWidth,
-      'previewHeight': previewHeight,
-      'webformatURL': webformatURL,
-      'webformatWidth': webformatWidth,
-      'webformatHeight': webformatHeight,
-      'largeImageURL': largeImageURL,
-      'imageWidth': imageWidth,
-      'imageHeight': imageHeight,
-      'imageSize': imageSize,
-      'views': views,
-      'downloads': downloads,
-      'collections': collections,
-      'likes': likes,
-      'comments': comments,
-      'userId': userId,
-      'user': user,
-      'userImageURL': userImageURL,
-    };
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['pageURL'] = pageURL;
+    map['type'] = type;
+    map['tags'] = tags;
+    map['previewURL'] = previewURL;
+    map['previewWidth'] = previewWidth;
+    map['previewHeight'] = previewHeight;
+    map['webformatURL'] = webformatURL;
+    map['webformatWidth'] = webformatWidth;
+    map['webformatHeight'] = webformatHeight;
+    map['largeImageURL'] = largeImageURL;
+    map['imageWidth'] = imageWidth;
+    map['imageHeight'] = imageHeight;
+    map['imageSize'] = imageSize;
+    map['views'] = views;
+    map['downloads'] = downloads;
+    map['collections'] = collections;
+    map['likes'] = likes;
+    map['comments'] = comments;
+    map['user_id'] = userId;
+    map['user'] = user;
+    map['userImageURL'] = userImageURL;
+    return map;
   }
 
-  factory Hits.fromJson(Map<String, dynamic> map) {
-    return Hits(
-      id: map['id'] as num,
-      pageURL: map['pageURL'] as String,
-      type: map['type'] as String,
-      tags: map['tags'] as String,
-      previewURL: map['previewURL'] as String,
-      previewWidth: map['previewWidth'] as num,
-      previewHeight: map['previewHeight'] as num,
-      webformatURL: map['webformatURL'] as String,
-      webformatWidth: map['webformatWidth'] as num,
-      webformatHeight: map['webformatHeight'] as num,
-      largeImageURL: map['largeImageURL'] as String,
-      imageWidth: map['imageWidth'] as num,
-      imageHeight: map['imageHeight'] as num,
-      imageSize: map['imageSize'] as num,
-      views: map['views'] as num,
-      downloads: map['downloads'] as num,
-      collections: map['collections'] as num,
-      likes: map['likes'] as num,
-      comments: map['comments'] as num,
-      userId: map['userId'] as num,
-      user: map['user'] as String,
-      userImageURL: map['userImageURL'] as String,
-    );
+  Hits.fromJson(dynamic json) {
+    id = json['id'];
+    pageURL = json['pageURL'];
+    type = json['type'];
+    tags = json['tags'];
+    previewURL = json['previewURL'];
+    previewWidth = json['previewWidth'];
+    previewHeight = json['previewHeight'];
+    webformatURL = json['webformatURL'];
+    webformatWidth = json['webformatWidth'];
+    webformatHeight = json['webformatHeight'];
+    largeImageURL = json['largeImageURL'];
+    imageWidth = json['imageWidth'];
+    imageHeight = json['imageHeight'];
+    imageSize = json['imageSize'];
+    views = json['views'];
+    downloads = json['downloads'];
+    collections = json['collections'];
+    likes = json['likes'];
+    comments = json['comments'];
+    userId = json['user_id'];
+    user = json['user'];
+    userImageURL = json['userImageURL'];
   }
 
 //</editor-fold>
