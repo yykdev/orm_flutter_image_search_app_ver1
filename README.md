@@ -5,11 +5,11 @@ A new Flutter project.
 ## 패키지 설계 순서
 
 > DTO 
-> $downarrow;
+> /downarrow
 > api
-> $downarrow;
+> /downarrow
 > model
-> $downarrow;
+> /downarrow
 > mapper
-> $downarrow;
+> /downarrow
 > repository
