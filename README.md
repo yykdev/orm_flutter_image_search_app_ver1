@@ -4,12 +4,4 @@ A new Flutter project.
 
 ## 패키지 설계 순서
 
-> DTO 
-> /downarrow
-> api
-> /downarrow
-> model
-> /downarrow
-> mapper
-> /downarrow
-> repository
+- DTO -> api -> model -> mapper -> repository
